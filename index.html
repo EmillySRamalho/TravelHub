@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelHub</title>
     <link rel="icon" type="image/x-icon" href="./img/viagem.png">
     <link rel="stylesheet" href="styles.css">
+    <script src="./script.js" defer></script>
+    <script src="./Api.js" defer></script>
 </head>
+
 <body>
     <header id="header">
         <div>
@@ -26,6 +30,71 @@
             <button class="btn">Login</button>
         </div>
     </header>
-    
+    <div class="conteudo">
+        <div class="carrosel">
+            <h1 class="frase-efeito">Descubra novos destinos, viva novas histórias.</h1>
+            <img class="imagem ativo" src="./img/praia.jpg" alt="Imagem Central">
+            <img class="imagem" src="./img/paris.jpg" alt="Imagem Secundária">
+            <img class="imagem" src="./img/hotel5.jpg" alt="Imagem Terciária">
+
+            <section class="busca-voos">
+                <div class="campos">
+                    <input type="text" id="origem" placeholder="Origem (ex: GRU)">
+                    <input type="text" id="destino" placeholder="Destino (ex: MIA)">
+                    <input type="date" id="data">
+                    <input type="number" id="adultos" placeholder="Adultos" min="1" value="1">
+                    <button id="btn-buscar">Buscar</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="lugares-procurados">
+        <h2>Lugares mais procurados</h2>
+        <div class="cards-lugares">
+            <div class="card-lugar">
+                <img src="./img/maldivas.jpg" alt="Maldivas">
+                <h3>Maldivas</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/Miami.jpg" alt="Miami">
+                <h3>Miami</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/dubai.jpg" alt="Dubai">
+                <h3>Dubai</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/Capadocia.jpg" alt="Capadócia">
+                <h3>Capadócia</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/nova iorque.jpg" alt="Nova Iorque">
+                <h3>Nova Iorque</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/rio de janeiro.jpg" alt="Rio de Janeiro">
+                <h3>Rio de Janeiro</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/tokio.jpg" alt="Tóquio">
+                <h3>Tóquio</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/veneza.jpg" alt="Veneza">
+                <h3>Veneza</h3>
+            </div>
+            <div class="card-lugar">
+                <img src="./img/seatle.jpg" alt="Seattle">
+                <h3>Seattle</h3>
+            </div>
+        </div>
+        <div class="ofertas-voo">
+            <h2>Ofertas de Voos</h2>
+            <div id="lista-voos" class="cards-voos"></div>
+        </div>
+
+
 </body>
+
 </html>

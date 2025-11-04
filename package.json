@@ -1,0 +1,31 @@
+{
+  "name": "travelhub",
+  "version": "1.0.0",
+  "description": "Projeto TravelHub",
+  "main": "Api.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Api.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmillySRamalho/TravelHub.git"
+  },
+  "keywords": [
+    "viagem",
+    "API",
+    "frontend",
+    "backend"
+  ],
+  "author": "Emilly Santos Ramalho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmillySRamalho/TravelHub/issues"
+  },
+  "homepage": "https://github.com/EmillySRamalho/TravelHub#readme",
+  "dependencies": {
+    "axios": "^1.13.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

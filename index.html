@@ -9,8 +9,27 @@
     <link rel="stylesheet" href="styles.css">
     <script src="./script.js" defer></script>
     <script src="./Api.js" defer></script>
-    
+    <script src="./chatbot.js" defer></script>
+
 </head>
+
+<div class="chatbot-bubble" id="chat-toggle">💬</div>
+
+<div class="chatbot-container" id="chatbot">
+  <div class="chat-header">✈️ TravelBot - Suporte TravelHub</div>
+  <div class="chat-body" id="chat-body">
+    <div class="bot-message">
+      Olá! 😄 Sou o TravelBot, seu assistente de viagens.<br><br>
+      Posso te ajudar a <b>encontrar pacotes</b>, <b>hotéis</b> ou <b>tirar dúvidas</b> sobre o site.  
+      Como posso te ajudar hoje?
+    </div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="user-input" placeholder="Digite aqui...">
+    <button id="send-btn">Enviar</button>
+  </div>
+</div>
+
 <body>
     <header id="header">
         <div>
@@ -26,8 +45,9 @@
             </ul>
         </nav>
         <div class="acesso">
-            <button class="btn">Cadastre-se</button>
-            <button class="btn">Login</button>
+            <button class="btn" onclick="window.location.href='cadastra-se.html'">Cadastre-se</button>
+            <button class="btn" onclick="window.location.href='login.html'">Login</button>
+
         </div>
     </header>
     <div class="conteudo">
@@ -48,10 +68,10 @@
             </section>
         </div>
     </div>
-     <div class="ofertas-voo">
-            <h2>Ofertas de Voos ✈️ </h2>
-            <div id="lista-voos" class="cards-voos"></div>
-        </div>
+    <div class="ofertas-voo">
+        <h2>Ofertas de Voos ✈️ </h2>
+        <div id="lista-voos" class="cards-voos"></div>
+    </div>
 
     <div class="lugares-procurados">
         <h2>Lugares mais procurados</h2>
@@ -95,11 +115,11 @@
         </div>
     </div>
 
-        <div class="container-hoteis">
-            <button class ="btn-hoteis">Ver Ofertas de Hotéis</button>
-            <button class ="btn-pacotes">Ver Pacotes de Viagem</button>
-            <button class ="btn-experiencias">Ver Experiências</button>
-        </div>
+    <div class="container-hoteis">
+        <button class="btn-hoteis">Ver Ofertas de Hotéis</button>
+        <button class="btn-pacotes">Ver Pacotes de Viagem</button>
+        <button class="btn-experiencias">Ver Experiências</button>
+    </div>
 
 </body>
 

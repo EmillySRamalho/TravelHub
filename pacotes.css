@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +10,6 @@ body {
     color: #333;
 }
 
-/* Header */
 header {
     background-color: #0d1b2a;
     color: #fff;
@@ -41,7 +39,7 @@ header nav a:hover {
 }
 
 #banner {
-    background: url("/img/hoteis/hoteisfundo.jpg") no-repeat center center/cover;
+    background: url('https://images.pexels.com/photos/11186075/pexels-photo-11186075.jpeg') no-repeat center center/cover;
     height: 60vh;
     display: flex;
     align-items: center;
@@ -74,28 +72,27 @@ header nav a:hover {
     text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
-/* Grid de hotéis */
-#hoteis {
+#pacotes {
     padding: 60px 40px;
     max-width: 1400px;
     margin: auto;
 }
 
-#hoteis h2 {
+#pacotes h2 {
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 40px;
     color: #0d1b2a;
 }
 
-.grid-hotels {
+.grid-packages {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
-/* Card do hotel */
-.hotel-card {
+.package-card {
+    position: relative;
     background: #fff;
     border-radius: 15px;
     overflow: hidden;
@@ -105,49 +102,49 @@ header nav a:hover {
     flex-direction: column;
 }
 
-.hotel-card:hover {
+.package-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-.hotel-card img {
+.package-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     transition: transform 0.5s;
 }
 
-.hotel-card img:hover {
+.package-card img:hover {
     transform: scale(1.05);
 }
 
-.hotel-info {
+.package-info {
     padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.hotel-info h3 {
+.package-info h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #0d1b2a;
 }
 
-.hotel-info p {
+.package-info p {
     flex: 1;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     color: #555;
 }
 
-.hotel-info .price {
+.package-info .price {
     font-weight: 700;
-    color: #fca311;
-    margin-bottom: 15px;
+    color: #ff6b6b;
+    margin-bottom: 10px;
 }
 
-.hotel-info button {
-    background: #fca311;
+.package-info button {
+    background: #24909e;
     color: #fff;
     border: none;
     padding: 12px 20px;
@@ -155,14 +152,28 @@ header nav a:hover {
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
+    position: relative;
 }
 
-.hotel-info button:hover {
-    background: #e59400;
+.package-info button:hover {
+    background: #0e5f69;
     transform: scale(1.05);
 }
 
-/* Contato */
+.package-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ff6b6b;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
 #contato {
     padding: 60px 40px;
     background: #e5e5e5;
@@ -201,15 +212,34 @@ header nav a:hover {
 }
 
 #contato button:hover {
-    background: #fca311;
-    color: #fff;
+    background: #24909e;
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
     background-color: #0d1b2a;
     color: #fff;
     text-align: center;
     padding: 20px;
+}
+
+.tooltip {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #19145e;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+    font-weight: 400;
+}
+
+.tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
 }

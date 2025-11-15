@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelHub Hotéis</title>
+    <link rel="stylesheet" href="hotel.css">
+    <link rel="icon" type="image/png" href="./img/viagem.png">
+</head>
+<body>
+    <header>
+        <h1>TravelHub Hotéis</h1>
+        <nav>
+            <a href ="#home" onclick="window.location.href='index.html'">Início</a>
+            <a href="#hoteis">Hotéis</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section id="banner">
+        <div class="banner-content">
+            <h2>Encontre seu hotel perfeito!</h2>
+            <p>Explore nossas opções e reserve agora mesmo.</p>
+        </div>
+    </section>
+
+    <!-- Lista de hotéis -->
+    <section id="hoteis">
+        <h2>Nossos Hotéis</h2>
+        <div class="grid-hotels">
+            <!-- Cards serão gerados pelo hotel.js -->
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+        <h2>Contato</h2>
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Hotéis Paradise. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="hotel.js"></script>
+</body>
+</html>

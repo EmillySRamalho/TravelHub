@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacotes de Viagem</title>
+    <link rel="stylesheet" href="pacotes.css">
+    <link rel="icon" type="image/png" href="./img/viagem.png">
+</head>
+<body>
+    <header>
+        <h1>Pacotes de Viagem</h1>
+        <nav>
+            <a href ="#home" onclick="window.location.href='index.html'">Início</a>
+            <a href="#pacotes">Pacotes</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+  
+    <section id="banner">
+        <div class="banner-content">
+            <h2>Descubra seu próximo destino!</h2>
+            <p>Escolha entre nossos pacotes exclusivos e viaje com conforto.</p>
+        </div>
+    </section>
+
+    <!-- Lista de pacotes -->
+    <section id="pacotes">
+        <h2>Nossos Pacotes</h2>
+        <div class="grid-packages">
+            <!-- Cards gerados pelo JS -->
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+        <h2>Contato</h2>
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Pacotes de Viagem Paradise. Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="pacotes.js"></script>
+</body>
+</html>

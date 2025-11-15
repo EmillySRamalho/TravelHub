@@ -9,12 +9,22 @@
     
 </head>
 <body>
-    <div class="container">
-        <h1>Login</h1>
-        <p>Entre com uma das opções abaixo:</p>
+      <div class="container">
 
-        <button id="google-btn" class="btn google">Continuar com Google</button>
-        <button id="facebook-btn" class="btn facebook">Continuar com Facebook</button>
+        <h1>Bem-vinda</h1>
+        <p class="subtitle">Acesse sua conta para continuar</p>
+
+        <!-- LOGIN COM GOOGLE -->
+        <button id="google-btn" class="btn btn-google">Continuar com Google</button>
+
+        <div class="divider">ou</div>
+
+        <!-- CAMPOS EMAIL/SENHA -->
+        <input type="email" id="email" placeholder="Digite seu e-mail">
+        <input type="password" id="senha" placeholder="Digite sua senha">
+
+        <button id="login-email-btn" class="btn btn-main">Entrar</button>
+        <button id="criar-email-btn" class="btn">Criar nova conta</button>
 
         <div id="resultado"></div>
     </div>

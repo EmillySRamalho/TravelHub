@@ -1,45 +1,109 @@
-body {
-    margin: 0;
-    padding: 0;
-    background: #f2f2f2;
-    font-family: Arial, Helvetica, sans-serif;
-}
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-.container {
-    width: 350px;
-    margin: 100px auto;
-    padding: 30px;
-    background: #fff;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        body {
+            background: linear-gradient(135deg, #0066ff, #00c2ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-h1 {
-    margin-bottom: 10px;
-}
+        .container {
+            width: 380px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
 
-.btn {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        h1 {
+            margin-bottom: 10px;
+            color: #222;
+        }
 
-.google {
-    background: #db4437;
-    color: white;
-}
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
 
-.facebook {
-    background: #1877f2;
-    color: white;
-}
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 15px;
+        }
 
-#resultado {
-    margin-top: 20px;
-    font-size: 14px;
-}
+        input:focus {
+            border-color: #007bff;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .btn-google {
+            background: #fff;
+            border: 2px solid #4285F4;
+            color: #4285F4;
+        }
+
+        .btn-google:hover {
+            background: #4285F4;
+            color: #fff;
+        }
+
+        .btn-main {
+            background: #0066ff;
+            color: #fff;
+        }
+
+        .btn-main:hover {
+            background: #0047b3;
+        }
+
+        #resultado {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #222;
+        }
+
+        .divider {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #777;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            width: 30%;
+            height: 1px;
+            background: #ccc;
+            position: absolute;
+            top: 50%;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+        .divider::after {
+            right: 0;
+        }

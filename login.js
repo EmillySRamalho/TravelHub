@@ -5,7 +5,8 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -23,15 +24,21 @@ const auth = getAuth(app);
 
 // Botões
 const googleBtn = document.getElementById("google-btn");
-const fbBtn = document.getElementById("facebook-btn");
 
-// Formulário email/senha
+// Inputs
 const emailInput = document.getElementById("email");
 const senhaInput = document.getElementById("senha");
+
+// Botões de login/criação
 const loginEmailBtn = document.getElementById("login-email-btn");
 const criarContaBtn = document.getElementById("criar-email-btn");
 
+// Esqueci minha senha
+const esqueciSenhaBtn = document.getElementById("esqueci-senha");
+
+// Resultado
 const result = document.getElementById("resultado");
+
 
 /* --------------- LOGIN COM GOOGLE ----------------- */
 googleBtn.addEventListener("click", async () => {
@@ -50,7 +57,8 @@ googleBtn.addEventListener("click", async () => {
     }
 });
 
-/* --------------- CRIAR CONTA EMAIL + SENHA ----------------- */
+
+/* --------------- CRIAR CONTA: EMAIL + SENHA ----------------- */
 criarContaBtn.addEventListener("click", async () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
@@ -60,13 +68,14 @@ criarContaBtn.addEventListener("click", async () => {
         const user = res.user;
 
         result.innerHTML = `
-            <strong>Conta criada!</strong><br>
+            <strong>Conta criada com sucesso!</strong><br>
             Email: ${user.email}
         `;
     } catch (err) {
         result.textContent = "Erro ao criar conta: " + err.message;
     }
 });
+
 
 /* --------------- LOGIN EMAIL + SENHA ----------------- */
 loginEmailBtn.addEventListener("click", async () => {
@@ -83,5 +92,26 @@ loginEmailBtn.addEventListener("click", async () => {
         `;
     } catch (err) {
         result.textContent = "Erro no login: " + err.message;
+    }
+});
+
+
+/* --------------- ESQUECI MINHA SENHA ----------------- */
+esqueciSenhaBtn.addEventListener("click", async () => {
+    const email = emailInput.value;
+
+    if (!email) {
+        result.textContent = "Digite seu e-mail para recuperar a senha.";
+        return;
+    }
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+        result.innerHTML = `
+            <strong>E-mail enviado!</strong><br>
+            Verifique sua caixa de entrada para redefinir a senha.
+        `;
+    } catch (err) {
+        result.textContent = "Erro ao enviar e-mail: " + err.message;
     }
 });

@@ -3,12 +3,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import { 
     getAuth,
     GoogleAuthProvider,
-    FacebookAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-
-// → CONFIGURAÇÃO REAL DO FIREBASE
 const firebaseConfig = {
     apiKey: "AIzaSyDLuFu3bxT5yhDctPMkyGtKdo_9QGm5eq8",
     authDomain: "travelhub-c15ac.firebaseapp.com",
@@ -19,19 +18,22 @@ const firebaseConfig = {
     measurementId: "G-TXMQ8HNWZ9"
 };
 
-
-// → INICIALIZAR FIREBASE
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-
-// → PEGAR BOTÕES + ÁREA QUE MOSTRA RESULTADO
+// Botões
 const googleBtn = document.getElementById("google-btn");
-const facebookBtn = document.getElementById("facebook-btn");
+const fbBtn = document.getElementById("facebook-btn");
+
+// Formulário email/senha
+const emailInput = document.getElementById("email");
+const senhaInput = document.getElementById("senha");
+const loginEmailBtn = document.getElementById("login-email-btn");
+const criarContaBtn = document.getElementById("criar-email-btn");
+
 const result = document.getElementById("resultado");
 
-
-// → LOGIN COM GOOGLE
+/* --------------- LOGIN COM GOOGLE ----------------- */
 googleBtn.addEventListener("click", async () => {
     try {
         const provider = new GoogleAuthProvider();
@@ -43,33 +45,43 @@ googleBtn.addEventListener("click", async () => {
             Nome: ${user.displayName}<br>
             Email: ${user.email}
         `;
-
-        console.log("Google User:", user);
-
     } catch (err) {
         result.textContent = "Erro Google: " + err.message;
-        console.error(err);
     }
 });
 
+/* --------------- CRIAR CONTA EMAIL + SENHA ----------------- */
+criarContaBtn.addEventListener("click", async () => {
+    const email = emailInput.value;
+    const senha = senhaInput.value;
 
-// → LOGIN COM FACEBOOK
-facebookBtn.addEventListener("click", async () => {
     try {
-        const provider = new FacebookAuthProvider();
-        const res = await signInWithPopup(auth, provider);
+        const res = await createUserWithEmailAndPassword(auth, email, senha);
         const user = res.user;
 
         result.innerHTML = `
-            <strong>Facebook Login OK!</strong><br>
-            Nome: ${user.displayName}<br>
-            Email: ${user.email || "Não fornecido pelo Facebook"}
+            <strong>Conta criada!</strong><br>
+            Email: ${user.email}
         `;
-
-        console.log("Facebook User:", user);
-
     } catch (err) {
-        result.textContent = "Erro Facebook: " + err.message;
-        console.error(err);
+        result.textContent = "Erro ao criar conta: " + err.message;
+    }
+});
+
+/* --------------- LOGIN EMAIL + SENHA ----------------- */
+loginEmailBtn.addEventListener("click", async () => {
+    const email = emailInput.value;
+    const senha = senhaInput.value;
+
+    try {
+        const res = await signInWithEmailAndPassword(auth, email, senha);
+        const user = res.user;
+
+        result.innerHTML = `
+            <strong>Login realizado!</strong><br>
+            Email: ${user.email}
+        `;
+    } catch (err) {
+        result.textContent = "Erro no login: " + err.message;
     }
 });

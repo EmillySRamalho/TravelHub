@@ -4,12 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realize o seu Cadastro</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="icon" type="image/x-icon" href="./img/viagem.png">
     
-    
+
 </head>
+
 <body>
-    
+    <div class="container">
+
+        <h1>Crie sua conta</h1>
+        <p class="subtitle">Preencha os dados abaixo</p>
+
+        <!-- NOME -->
+        <input type="text" id="nome" placeholder="Seu nome completo">
+
+        <!-- EMAIL -->
+        <input type="email" id="email" placeholder="Seu e-mail">
+
+        <!-- SENHA -->
+        <input type="password" id="senha" placeholder="Crie uma senha">
+
+        <!-- BOTÃO CRIAR CONTA -->
+        <button id="btn-criar" class="btn btn-main">Criar conta</button>
+
+        <div class="divider">ou</div>
+
+        <!-- GOOGLE -->
+        <button id="google-btn" class="btn btn-google">
+            Criar conta com Google
+        </button>
+
+        <p class="back-login">
+            Já tem conta? <a href="login.html">Entrar</a>
+        </p>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script src="cadastro.js" type="module"></script>
+</body>
+</html>
+
 </body>
 </html>

@@ -111,7 +111,7 @@
        right: 0;
    }
 
-   .forgot-password {
+   .forgot-password, .back-login{
        margin-top: 10px;
        color: #1a73e8;
        font-weight: 500;

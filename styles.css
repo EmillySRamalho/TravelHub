@@ -186,9 +186,9 @@ header {
 }
 
 .card-lugar img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
     object-fit: cover;
     border: 3px solid #ff6b6b; 
     transition: transform 0.3s ease;
@@ -211,7 +211,6 @@ header {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin: 40px auto;
   max-width: 100%;
-  background-image: url('img/full-frame-shot-de-cloudscape-com-um-aviao-sobrevoando.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden; 
@@ -281,28 +280,98 @@ header {
     background-color: #45b0be;
 }
 
-.container-hoteis {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
-    background-image: url('img/foto.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 200px 50px;
-    border-radius: 15px;
-    gap: 20px;
+.secao-premium {
+  width: 100%;
+  padding: 100px 30px;
+  background: linear-gradient(180deg, #ebf2f5 0%, #f7efef 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn-hoteis, .btn-pacotes, .btn-experiencias {
-    padding: 12px 25px;
-    background-color: #24909e;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.2s;
+.conteudo-premium {
+  width: 85%;
+  max-width: 950px;
+  text-align: center;
+  padding: 60px 50px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  border-radius: 28px;
+  border: 1px solid rgba(36, 144, 158, 0.22);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 25px rgba(36, 144, 158, 0.25);
+
+  animation: surgir 1.2s ease forwards;
+  opacity: 0;
 }
+
+@keyframes surgir {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.titulo-premium {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.subtitulo-premium {
+  font-size: 1.2rem;
+  color: #4b5a67;
+  margin-bottom: 50px;
+}
+
+.botoes-premium {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.btn-premium {
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #26a8b8, #1c7a85);
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.15),
+    0 0 12px rgba(38, 168, 184, 0.45);
+
+  transition: 0.25s ease;
+}
+
+.btn-premium:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(38, 168, 184, 0.6);
+}
+
+.btn-premium:active {
+  transform: scale(0.96);
+}
+
+  .btn-premium {
+    width: 100%;
+  }
+
+  .titulo-premium {
+    font-size: 2.1rem;
+  }
+
 
 .chatbot-bubble {
   position: fixed;
@@ -437,7 +506,7 @@ header {
   align-items: center;
   justify-content: center;
 
-  background-image: url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1200');
+  background-image: url('https://images.pexels.com/photos/2916821/pexels-photo-2916821.jpeg');
   background-size: cover;
   background-position: center;
 

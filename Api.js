@@ -6,14 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Suas credenciais de teste
 const client_id = "Z5M9d9w5KEPNduGv8nviOoee0CZBjPU8";
 const client_secret = "H3hORONfu19uh0Jp";
 
 // Endpoint para buscar voos
 app.get("/voos", async (req, res) => {
   try {
-    // Captura parâmetros da query ou define valores padrão
+  
     const {
       origem = "GRU",
       destino = "MIA",

@@ -1,15 +1,28 @@
-let indice = 0;
-        const imagens = document.querySelectorAll(".carrosel .imagem");
+async function buscarVoosAmadeus(origem, destino, data, adultos) {
+    const clientId = "xHAvCBANaAjDalIF2OAHL58ZTtkZHi3E";
+    const clientSecret = "HcnVQkgby8GsbGtQ";
 
-        function mostrarSlide(n) {
-            imagens.forEach(img => img.classList.remove("ativo"));
-            indice = (n + imagens.length) % imagens.length;
-            imagens[indice].classList.add("ativo");
-        }
-        setInterval(() => {
-            mostrarSlide(indice + 1);
-        }, 4000);
+    // Obter token
+    const tokenRes = await fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+            grant_type: "client_credentials",
+            client_id: clientId,
+            client_secret: clientSecret
+        })
+    });
+    const tokenData = await tokenRes.json();
+    const accessToken = tokenData.access_token;
 
+    // Buscar voos
+    const res = await fetch(
+        `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origem}&destinationLocationCode=${destino}&departureDate=${data}&adults=${adultos}&max=5`,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
+    const dataJson = await res.json();
+    return dataJson.data || [];
+}
 
 document.getElementById("btn-buscar").addEventListener("click", async () => {
     const origem = document.getElementById("origem").value.toUpperCase() || "GRU";
@@ -18,13 +31,12 @@ document.getElementById("btn-buscar").addEventListener("click", async () => {
     const adultos = document.getElementById("adultos").value || 1;
 
     try {
-        const response = await fetch(`http://localhost:3000/voos?origem=${origem}&destino=${destino}&data=${data}&adultos=${adultos}`);
-        const dados = await response.json();
+        const voos = await buscarVoosAmadeus(origem, destino, data, adultos);
 
         const lista = document.getElementById("lista-voos");
         lista.innerHTML = "";
 
-        dados.data.forEach((voo) => {
+        voos.forEach((voo) => {
             const itinerario = voo.itineraries[0];
             const partida = itinerario.segments[0].departure;
             const chegada = itinerario.segments.slice(-1)[0].arrival;

@@ -8,8 +8,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 <div class="container">
+    <!-- Sidebar -->
     <aside class="sidebar">
         <div class="profile-section">
             <img id="user-photo" src="img/default-avatar.png" alt="Foto do usuário">
@@ -25,15 +27,19 @@
             <button id="logout-btn"><i class="fa fa-sign-out-alt"></i> Sair</button>
         </nav>
     </aside>
+
+    <!-- Main Content -->
     <main class="main-content">
         <header class="header">
             <h1>Bem-vindo, <span id="user-name-header">Usuário</span>!</h1>
         </header>
+
         <div id="content-area" class="content">
             <p>Selecione uma opção no menu para visualizar detalhes.</p>
         </div>
     </main>
 </div>
+
 <script type="module" src="dashboard-completo.js"></script>
 </body>
 </html>

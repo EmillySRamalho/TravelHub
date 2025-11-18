@@ -1,208 +1,141 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelHub</title>
-    <link rel="icon" type="image/x-icon" href="./img/viagem.png">
-    <link rel="stylesheet" href="styles.css">
-    <script src="./script.js" defer></script>
-    <script src="./Api.js" defer></script>
-    <script src="./chatbot.js" defer></script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TravelHub</title>
+<link rel="icon" type="image/x-icon" href="./img/viagem.png">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+<script src="./index.js" type="module" defer></script>
 </head>
 
-<div class="chatbot-bubble" id="chat-toggle">💬</div>
-
-<div class="chatbot-container" id="chatbot">
-  <div class="chat-header">✈️ TravelBot - Suporte TravelHub</div>
-  <div class="chat-body" id="chat-body">
-    <div class="bot-message">
-      Olá! 😄 Sou o TravelBot, seu assistente de viagens.<br><br>
-      Posso te ajudar a <b>encontrar pacotes</b>, <b>hotéis</b> ou <b>tirar dúvidas</b> sobre o site.  
-      Como posso te ajudar hoje?
+<body>
+<header id="header">
+    <div>
+        <img class="logo" src="./img/Travel-logo.png" alt="TravelHub Logo" id="logo">
     </div>
-  </div>
-  <div class="chat-footer">
-    <input type="text" id="user-input" placeholder="Digite aqui...">
-    <button id="send-btn">Enviar</button>
-  </div>
+    <nav class="nav-menu">
+        <ul class="nav-links">
+            <li><a href="#home">Minhas Viagens</a></li>
+            <li><a href="#destinations">Destinos</a></li>
+            <li><a href="#packages">Pacotes</a></li>
+            <li><a href="#contact">Contato</a></li>
+            <li><a href="#support">Suporte</a></li>
+        </ul>
+    </nav>
+    <div class="acesso">
+        <button class="btn" id="btn-acesso">Login</button>
+    </div>
+</header>
+
+<div class="conteudo">
+    <div class="carrosel">
+        <h1 class="frase-efeito">Descubra novos destinos, viva novas histórias.</h1>
+        <img class="imagem ativo" src="https://images.pexels.com/photos/1045113/pexels-photo-1045113.jpeg" alt="Imagem Central">
+        <img class="imagem" src="https://images.pexels.com/photos/3027577/pexels-photo-3027577.jpeg" alt="Imagem Secundária">
+        <img class="imagem" src="https://images.pexels.com/photos/1470405/pexels-photo-1470405.jpeg" alt="Imagem Terciária">
+
+        <section class="busca-voos">
+            <div class="campos">
+                <input type="text" id="origem" placeholder="Origem (ex: GRU)">
+                <input type="text" id="destino" placeholder="Destino (ex: MIA)">
+                <input type="date" id="data">
+                <input type="number" id="adultos" placeholder="Adultos" min="1" value="1">
+                <button id="btn-buscar">Buscar</button>
+            </div>
+        </section>
+    </div>
 </div>
 
-<body>
-    <header id="header">
-        <div>
-            <img class="logo" src="./img/Travel-logo.png" alt="TravelHub Logo" id="logo">
-        </div>
-        <nav class="nav-menu">
-            <ul class="nav-links">
-                <li><a href="#home">Minhas Viagens</a></li>
-                <li><a href="#destinations">Destinos</a></li>
-                <li><a href="#packages">Pacotes</a></li>
-                <li><a href="#contact">Contato</a></li>
-                <li><a href="#support">Suporte</a></li>
-            </ul>
-        </nav>
-        <div class="acesso">
-            <button class="btn" onclick="window.location.href='cadastra-se.html'">Cadastre-se</button>
-            <button class="btn" onclick="window.location.href='login.html'">Login</button>
+<div class="ofertas-voo">
+    <h2>Ofertas de Voos ✈️ </h2>
+    <div id="lista-voos" class="cards-voos"></div>
+</div>
 
-        </div>
-    </header>
-    <div class="conteudo">
-        <div class="carrosel">
-            <h1 class="frase-efeito">Descubra novos destinos, viva novas histórias.</h1>
-            <img class="imagem ativo" src="https://images.pexels.com/photos/1045113/pexels-photo-1045113.jpeg" alt="Imagem Central">
-            <img class="imagem" src="https://images.pexels.com/photos/3027577/pexels-photo-3027577.jpeg" alt="Imagem Secundária">
-            <img class="imagem" src="https://images.pexels.com/photos/1470405/pexels-photo-1470405.jpeg" alt="Imagem Terciária">
-
-            <section class="busca-voos">
-                <div class="campos">
-                    <input type="text" id="origem" placeholder="Origem (ex: GRU)">
-                    <input type="text" id="destino" placeholder="Destino (ex: MIA)">
-                    <input type="date" id="data">
-                    <input type="number" id="adultos" placeholder="Adultos" min="1" value="1">
-                    <button id="btn-buscar">Buscar</button>
-                </div>
-            </section>
-        </div>
+<div class="lugares-procurados">
+    <h2>Lugares mais procurados</h2>
+    <div class="cards-lugares">
+        <div class="card-lugar"><img src="./img/maldivas.jpg" alt="Maldivas"><h3>Maldivas</h3></div>
+        <div class="card-lugar"><img src="./img/Miami.jpg" alt="Miami"><h3>Miami</h3></div>
+        <div class="card-lugar"><img src="./img/dubai.jpg" alt="Dubai"><h3>Dubai</h3></div>
+        <div class="card-lugar"><img src="./img/Capadocia.jpg" alt="Capadócia"><h3>Capadócia</h3></div>
+        <div class="card-lugar"><img src="./img/nova iorque.jpg" alt="Nova Iorque"><h3>Nova Iorque</h3></div>
+        <div class="card-lugar"><img src="./img/rio de janeiro.jpg" alt="Rio de Janeiro"><h3>Rio de Janeiro</h3></div>
+        <div class="card-lugar"><img src="./img/tokio.jpg" alt="Tóquio"><h3>Tóquio</h3></div>
+        <div class="card-lugar"><img src="./img/veneza.jpg" alt="Veneza"><h3>Veneza</h3></div>
+        <div class="card-lugar"><img src="./img/seatle.jpg" alt="Seattle"><h3>Seattle</h3></div>
     </div>
-    <div class="ofertas-voo">
-        <h2>Ofertas de Voos ✈️ </h2>
-        <div id="lista-voos" class="cards-voos"></div>
-    </div>
+</div>
 
-    <div class="lugares-procurados">
-        <h2>Lugares mais procurados</h2>
-        <div class="cards-lugares">
-            <div class="card-lugar">
-                <img src="./img/maldivas.jpg" alt="Maldivas">
-                <h3>Maldivas</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/Miami.jpg" alt="Miami">
-                <h3>Miami</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/dubai.jpg" alt="Dubai">
-                <h3>Dubai</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/Capadocia.jpg" alt="Capadócia">
-                <h3>Capadócia</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/nova iorque.jpg" alt="Nova Iorque">
-                <h3>Nova Iorque</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/rio de janeiro.jpg" alt="Rio de Janeiro">
-                <h3>Rio de Janeiro</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/tokio.jpg" alt="Tóquio">
-                <h3>Tóquio</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/veneza.jpg" alt="Veneza">
-                <h3>Veneza</h3>
-            </div>
-            <div class="card-lugar">
-                <img src="./img/seatle.jpg" alt="Seattle">
-                <h3>Seattle</h3>
-            </div>
-        </div>
-    </div>
-
-   <section class="secao-premium">
+<section class="secao-premium">
     <div class="conteudo-premium">
-
         <h2 class="titulo-premium">Descubra o mundo com o TravelHub</h2>
-        <p class="subtitulo-premium">
-            Tudo o que você precisa para planejar uma viagem perfeita em um só lugar.
-        </p>
-
+        <p class="subtitulo-premium">Tudo o que você precisa para planejar uma viagem perfeita em um só lugar.</p>
         <div class="botoes-premium">
             <button class="btn-premium" onclick="window.location.href='hotel.html'">Hotéis</button>
             <button class="btn-premium" onclick="window.location.href='pacotes.html'">Pacotes</button>
             <button class="btn-premium" onclick="window.location.href='experiencias.html'">Experiências</button>
         </div>
-
     </div>
 </section>
 
-
-    <section class="promo-banner">
-  <div class="promo-content">
-    <h2>🌍 Promoção Exclusiva!</h2>
-    <p>Viaje para destinos incríveis com até <strong>40% OFF</strong>. Somente esta semana!</p>
-
-    <a href="/promocoes" class="promo-btn">Ver Ofertas</a>
-  </div>
+<section class="promo-banner">
+    <div class="promo-content">
+        <h2>🌍 Promoção Exclusiva!</h2>
+        <p>Viaje para destinos incríveis com até <strong>40% OFF</strong>. Somente esta semana!</p>
+        <a href="/promocoes" class="promo-btn">Ver Ofertas</a>
+    </div>
 </section>
 
-
-</body>
 <footer class="site-footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <img src="img/viagem.png" alt="Travel Hub Logo" class="footer-logo" />
-      <p class="footer-tagline">Explorando o mundo com você</p>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <img src="img/viagem.png" alt="Travel Hub Logo" class="footer-logo">
+            <p class="footer-tagline">Explorando o mundo com você</p>
+        </div>
+        <div class="footer-nav">
+            <div class="footer-column">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="/about">Sobre nós</a></li>
+                    <li><a href="/careers">Carreiras</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="/flights">Voos</a></li>
+                    <li><a href="/hotels">Hotéis</a></li>
+                    <li><a href="/packages">Pacotes</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Ajuda</h4>
+                <ul>
+                    <li><a href="/contact">Contato</a></li>
+                    <li><a href="/faq">Perguntas Frequentes</a></li>
+                    <li><a href="/support">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Siga-nos</h4>
+                <ul class="social-links">
+                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="footer-nav">
-      <div class="footer-column">
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="/about">Sobre nós</a></li>
-          <li><a href="/careers">Carreiras</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Serviços</h4>
-        <ul>
-          <li><a href="/flights">Voos</a></li>
-          <li><a href="/hotels">Hotéis</a></li>
-          <li><a href="/packages">Pacotes</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Ajuda</h4>
-        <ul>
-          <li><a href="/contact">Contato</a></li>
-          <li><a href="/faq">Perguntas Frequentes</a></li>
-          <li><a href="/support">Suporte</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Siga-nos</h4>
-        <ul class="social-links">
-          <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
-        </ul>
-      </div>
+    <div class="footer-bottom">
+        <p>© 2025 Travel Hub. Todos os direitos reservados.</p>
+        <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Voltar ao topo</button>
     </div>
-    <div class="footer-newsletter">
-      <h4>Newsletter</h4>
-      <p>Receba novidades e ofertas exclusivas</p>
-      <form action="/subscribe" method="post">
-        <input type="email" name="email" placeholder="Seu e-mail" required />
-        <button type="submit">Inscrever</button>
-      </form>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 Travel Hub. Todos os direitos reservados.</p>
-    <ul class="footer-legal">
-      <li><a href="/privacy">Política de Privacidade</a></li>
-      <li><a href="/terms">Termos de Serviço</a></li>
-    </ul>
-    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Voltar ao topo</button>
-  </div>
 </footer>
 
-
+</body>
 </html>

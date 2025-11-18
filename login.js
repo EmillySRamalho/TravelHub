@@ -35,7 +35,7 @@ const esqueciSenha = document.getElementById('esqueci-senha');
 onAuthStateChanged(auth, user => {
     if(user){
         // Usuário já está logado, redireciona direto para o dashboard
-        window.location.href = 'dashboard.html';
+        window.location.href = 'dashboard-completo.html';
     }
 });
 

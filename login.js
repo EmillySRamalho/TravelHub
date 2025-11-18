@@ -44,7 +44,7 @@ googleBtn.addEventListener('click', async () => {
     const provider = new GoogleAuthProvider();
     try {
         await signInWithPopup(auth, provider);
-        window.location.href = 'dashboard.html';
+        window.location.href = 'dashboard-completo.html';
     } catch (error) {
         resultadoDiv.innerText = `Erro: ${error.message}`;
     }

@@ -21,6 +21,7 @@ const hotels = [
   {name: "Hotel Luxo Total", desc: "Suítes com todo conforto possível.", price: "R$ 500/noite", img: "./img/hoteis/hotel20.jpg", rating: 5, tag: "Oferta"}
 ];
 
+// Função para criar estrelas
 function createStars(rating) {
     let stars = '';
     for(let i = 0; i < 5; i++) {
@@ -29,6 +30,7 @@ function createStars(rating) {
     return stars;
 }
 
+// Renderizar cards de hotéis
 const container = document.querySelector(".grid-hotels");
 hotels.forEach(hotel => {
     const card = document.createElement("div");
@@ -47,27 +49,33 @@ hotels.forEach(hotel => {
     container.appendChild(card);
 });
 
-// TOOLTIP
+// Tooltip
 function showTooltip(message) {
     let tooltip = document.querySelector(".tooltip");
-    if (!tooltip) {
+    if(!tooltip){
         tooltip = document.createElement("div");
         tooltip.classList.add("tooltip");
         document.body.appendChild(tooltip);
     }
     tooltip.textContent = message;
     tooltip.classList.add("show");
-    setTimeout(() => {
-        tooltip.classList.remove("show");
-    }, 2500);
+    setTimeout(()=>{tooltip.classList.remove("show");}, 2500);
 }
 
-// RESERVA
+// Função de reserva
 function reserve(hotelName) {
-    showTooltip(`Você reservou: ${hotelName}! Entraremos em contato em breve.`);
+    showTooltip(`Você reservou: ${hotelName}!`);
+
+    // Salvar reserva no localStorage
+    let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+    reservas.push({hotel: hotelName, data: new Date().toISOString()});
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+
+    // Redireciona para o dashboard
+    window.location.href = "dashboard.html#reservas";
 }
 
-// FORMULÁRIO
+// Formulário de contato
 function enviarFormulario(event) {
     event.preventDefault();
     showTooltip("Mensagem enviada com sucesso!");

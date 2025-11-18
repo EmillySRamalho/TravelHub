@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class="container">
+
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="profile-section">
@@ -19,28 +20,94 @@
             <h2 id="user-name">Usuário</h2>
         </div>
         <nav class="menu">
-            <button id="dashboard-btn"><i class="fa fa-home"></i> Dashboard</button>
-            <button id="reservas-btn"><i class="fa fa-plane"></i> Minhas Reservas</button>
-            <button id="pagamento-btn"><i class="fa fa-credit-card"></i> Pagamentos</button>
-            <button id="logout-btn"><i class="fa fa-sign-out-alt"></i> Sair</button>
+            <button id="dashboard-btn" class="menu-btn"><i class="fa fa-home"></i> Dashboard</button>
+            <button id="reservas-btn" class="menu-btn"><i class="fa fa-plane"></i> Minhas Reservas</button>
+            <button id="pagamento-btn" class="menu-btn"><i class="fa fa-credit-card"></i> Pagamentos</button>
+            <button id="logout-btn" class="menu-btn logout"><i class="fa fa-sign-out-alt"></i> Sair</button>
         </nav>
     </aside>
 
-    <!-- Main -->
+    <!-- Main Content -->
     <main class="main-content">
         <header class="header">
             <h1>Bem-vindo, <span id="user-name-header">Usuário</span>!</h1>
             <div class="notifications">
                 <i class="fa fa-bell"></i>
-                <span id="notif-count">0</span>
+                <span id="notif-count">3</span>
             </div>
         </header>
 
         <div id="content-area" class="content">
-            <p>Selecione uma opção no menu para visualizar detalhes.</p>
+
+            <!-- Card de Boas-Vindas -->
+            <div class="card welcome-card">
+                <h2>Resumo do seu perfil</h2>
+                <p>Aqui você pode ver suas reservas, formas de pagamento e personalizar seu perfil.</p>
+            </div>
+
+            <!-- Cards de Reservas -->
+            <div class="card">
+                <h2>Reservas Ativas</h2>
+                <p>Você possui 2 reservas em andamento.</p>
+                <button class="details-btn">Ver detalhes</button>
+            </div>
+
+            <!-- Cards de Pagamento -->
+            <div class="card payment-card">
+                <div>
+                    <h3>Cartão Salvo</h3>
+                    <p>Mastercard ending 1234</p>
+                </div>
+                <i class="fa fa-credit-card"></i>
+            </div>
+
+            <div class="card payment-card">
+                <div>
+                    <h3>Cartão Salvo</h3>
+                    <p>Visa ending 5678</p>
+                </div>
+                <i class="fa fa-credit-card"></i>
+            </div>
+
+            <!-- Exemplo de Gráfico -->
+            <div class="card">
+                <h2>Histórico de Reservas</h2>
+                <canvas id="reservasChart"></canvas>
+            </div>
+
         </div>
     </main>
 </div>
-<script type="module" src="dashboard-completo.js"></script>
+
+<script type="module" src="js/dashboard.js"></script>
+<script>
+    // Exemplo de gráfico usando Chart.js
+    const ctx = document.getElementById('reservasChart').getContext('2d');
+    const reservasChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+            datasets: [{
+                label: 'Reservas por mês',
+                data: [3, 2, 4, 5, 3, 6],
+                backgroundColor: 'rgba(36, 144, 158, 0.2)',
+                borderColor: '#24909e',
+                borderWidth: 2,
+                tension:0.3,
+                fill:true
+            }]
+        },
+        options: {
+            responsive:true,
+            plugins: {
+                legend: { display: false },
+                tooltip: { mode: 'index', intersect: false }
+            },
+            scales: {
+                y: { beginAtZero:true }
+            }
+        }
+    });
+</script>
 </body>
 </html>

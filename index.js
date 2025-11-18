@@ -45,7 +45,7 @@ onAuthStateChanged(auth, user => {
 
         // Atualiza botão de acesso
         if(btnAcesso){
-            btnAcesso.textContent = "Dashboard";
+            btnAcesso.textContent = "Perfil";
             btnAcesso.onclick = () => window.location.href = "dashboard-completo.html";
         }
     } else {

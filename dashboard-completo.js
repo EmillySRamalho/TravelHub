@@ -173,3 +173,9 @@ logoutBtn.addEventListener('click', async ()=>{
   await signOut(auth);
   window.location.href='login.html';
 });
+
+const homeBtn = document.getElementById('home-btn');
+
+homeBtn.addEventListener('click', () => {
+    window.location.href = 'index.html';
+});

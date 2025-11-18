@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard TravelHub</title>
-<link rel="stylesheet" href="dashboard-completo.css">
+<link rel="stylesheet" href="dashboard.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    
 <div class="container">
-    <!-- Sidebar -->
     <aside class="sidebar">
         <div class="profile-section">
             <img id="user-photo" src="img/default-avatar.png" alt="Foto do usuário">
@@ -20,24 +18,17 @@
             <h2 id="user-name">Usuário</h2>
         </div>
         <nav class="menu">
-           <button id="home-btn"><i class="fa fa-home"></i> Início</button>
-            <button id="dashboard-btn"><i class="fa fa-home"></i> Dashboard</button>
+            <button id="home-btn"><i class="fa fa-home"></i> Início</button>
+            <button id="dashboard-btn"><i class="fa fa-chart-bar"></i> Dashboard</button>
             <button id="reservas-btn"><i class="fa fa-plane"></i> Minhas Reservas</button>
             <button id="pagamento-btn"><i class="fa fa-credit-card"></i> Pagamentos</button>
             <button id="logout-btn"><i class="fa fa-sign-out-alt"></i> Sair</button>
         </nav>
     </aside>
-
-    <!-- Main -->
     <main class="main-content">
         <header class="header">
             <h1>Bem-vindo, <span id="user-name-header">Usuário</span>!</h1>
-            <div class="notifications">
-                <i class="fa fa-bell"></i>
-                <span id="notif-count">0</span>
-            </div>
         </header>
-
         <div id="content-area" class="content">
             <p>Selecione uma opção no menu para visualizar detalhes.</p>
         </div>

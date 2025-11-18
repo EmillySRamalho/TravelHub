@@ -60,7 +60,7 @@ loginEmailBtn.addEventListener('click', async () => {
     }
     try {
         await signInWithEmailAndPassword(auth, email, senha);
-        window.location.href = 'dashboard.html';
+        window.location.href = 'dashboard-completo.html';
     } catch (error) {
         resultadoDiv.innerText = `Erro: ${error.message}`;
     }
